@@ -30,7 +30,7 @@ def main():
         
         latest_blockhash = http_client.get_latest_blockhash(commitment=Confirmed).value
         
-        txn = Transaction().add(transfer(TransferParams(from_pubkey=source_key.public_key, to_pubkey=destination_key, lamports=int(amount * 10**9))))
+        txn = Transaction().add(transfer(TransferParams(from_pubkey=source_key.pubkey, to_pubkey=destination_key, lamports=int(amount * 10**9))))
         
         transaction = http_client.send_legacy_transaction(txn, source_key, commitment=Confirmed, recent_blockhash=latest_blockhash).value
 
