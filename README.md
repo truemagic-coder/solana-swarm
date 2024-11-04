@@ -21,7 +21,7 @@ Fork it to create your own Solana Agent!
 
 ## Rate-Limited Public RPCs
 * `solana-swarm` = devnet
-* `solana-swarm --network mainnet` = mainnet-beta
+* `solana-swarm --network mainnet-beta` = mainnet-beta
 
 ## Custom RPC
 * `solana-swarm --rpc https://my-custom-rpc.com/123`

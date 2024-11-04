@@ -13,7 +13,7 @@ async def main(network: str, rpc: str):
 
     database = SQLiteDatabase("swarm.db")
     http_client = None
-    if network == "mainnet":
+    if network == "mainnet-beta":
         http_client = Client("https://api.mainnet-beta.solana.com")
     if network == "devnet":
         http_client = Client("https://api.devnet.solana.com")
@@ -87,7 +87,7 @@ async def main(network: str, rpc: str):
             print()  # New line after the complete response
 
 @click.command()
-@click.option("--network", required=False, default="devnet", type=click.Choice(["devnet", "mainnet"]), help="Solana Network to connect")
+@click.option("--network", required=False, default="devnet", type=click.Choice(["devnet", "mainnet-beta"]), help="Solana Network to connect")
 @click.option("--rpc", required=False, help="Custom RPC URL")
 def cli(network: str = "devnet", rpc: str = None):
     if not os.getenv("OPENAI_API_KEY"):
