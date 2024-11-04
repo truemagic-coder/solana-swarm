@@ -24,7 +24,11 @@ async def main(network: str, rpc: str):
     ai = AI(
             api_key=os.getenv("OPENAI_API_KEY"),
             name="Solana Swarm AI",
-            instructions="You are an AI Agent that can perform actions on the Solana blockchain. Show the text responses and explain the error messages to the user. Only pass the account numbers not public keys to the functions.",
+            instructions="""
+                You are an AI Agent that can perform actions on the Solana blockchain.
+                Show the text responses and explain the error messages to the user.
+                Do not cache errors always retry the functions. Only pass the account numbers not public keys to the functions.
+            """,
             database=database,
         )
     
