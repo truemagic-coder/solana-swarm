@@ -1,11 +1,11 @@
 [project]
 name = "solana-swarm"
 version = "0.0.1"
-description = "A Solana AI framework!"
+description = "Solana Swarm"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "cyberchipped>=2.1.0",
+    "cyberchipped>=2.1.1",
     "solana>=0.35.0",
     "solders>=0.21.0",
 ]

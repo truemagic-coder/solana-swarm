@@ -1,13 +1,14 @@
 from typing import List
 import os
-from cyberchipped.ai import AI, SQLiteDatabase
+import asyncio
+from cyberchipped import AI, SQLiteDatabase
 from solders.keypair import Keypair
 from solders.transaction import Transaction
 from solders.system_program import TransferParams, transfer
 from solana.rpc.commitment import Confirmed
 from solana.rpc.api import Client
 
-def main():
+async def main():
 
     database = SQLiteDatabase("swarm.db")
     http_client = Client("https://api.devnet.solana.com")
@@ -15,8 +16,8 @@ def main():
     
     ai = AI(
             api_key=os.getenv("OPENAI_API_KEY"),
-            name="Solana Swarm AI 0.0.1",
-            instructions="You are an AI Agent that can perform actions on the Solana blockchain.",
+            name="Solana Swarm AI",
+            instructions="You are an AI Agent that can perform actions on the Solana blockchain. Show the text responses and explain the error messages to the user. Only pass the account numbers not public keys to the functions.",
             database=database,
         )
     
@@ -30,32 +31,55 @@ def main():
     
     @ai.add_tool
     def create_account() -> str:
-        keypair = Keypair()
-        keypairs.append(keypair)
-        
-        return f"Created new account: {len(keypairs)} with public key: {keypair.pubkey()}"
-
-    @ai.add_tool
-    def get_balance(keypair_index: int) -> str:        
         try:
-            balance = http_client.get_balance(pubkey=keypairs[keypair_index-1].pubkey(), commitment=Confirmed).value
-            balance = balance / 10**9
-            return f"Balance of {keypairs[keypair_index-1].pubkey()} is {balance} SOL"
+            keypair = Keypair()
+            keypairs.append(keypair)
+            return f"Created new account: {len(keypairs)} with public key: {keypair.pubkey()}"
         except Exception as e:
             return f"Error: {e}"
 
     @ai.add_tool
-    def transfer_sol(from_keypair_index: int, to_keypair_index: int, sol_amount: float) -> str:   
-        try:             
-            latest_blockhash = http_client.get_latest_blockhash(commitment=Confirmed).value
-            
-            txn = Transaction().add(transfer(TransferParams(from_pubkey=keypairs[from_keypair_index-1].pubkey(), to_pubkey=keypairs[to_keypair_index-1].pubkey(), lamports=int(sol_amount * 10**9))))
-            
-            transaction = http_client.send_legacy_transaction(txn, keypairs[from_keypair_index-1], commitment=Confirmed, recent_blockhash=latest_blockhash).value
-
-            return f"Transferred {sol_amount} SOL from {keypairs[from_keypair_index-1].pubkey()} to {keypairs[to_keypair_index].pubkey()} with transaction ID: {transaction}"
+    def get_balance(account_number: str) -> str:    
+        try:
+            account_number = int(account_number)
+            balance = http_client.get_balance(pubkey=keypairs[account_number-1].pubkey(), commitment=Confirmed).value
+            balance = balance / 10**9
+            return f"Balance of {keypairs[account_number-1].pubkey()} is {balance} SOL"
         except Exception as e:
             return f"Error: {e}"
+
+    @ai.add_tool
+    def transfer_sol(from_account_number: str, to_account_number: str, sol_amount: str) -> str:
+        try:   
+            from_account_number = int(from_account_number)
+            to_account_number = int(to_account_number)
+            sol_amount = float(sol_amount)
+            instruction = transfer(TransferParams(from_pubkey=keypairs[from_account_number-1].pubkey(), to_pubkey=keypairs[to_account_number-1].pubkey(), lamports=int(sol_amount * 10**9)))
+            recent_blockhash = http_client.get_latest_blockhash().value.blockhash
+            txn = Transaction.new_signed_with_payer([instruction], payer=keypairs[from_account_number-1].pubkey(), signing_keypairs=[keypairs[from_account_number-1]], recent_blockhash=recent_blockhash)
+            signature = http_client.send_transaction(txn).value
+
+            return f"Transferred {sol_amount} SOL from {keypairs[from_account_number-1].pubkey()} to {keypairs[to_account_number-1].pubkey()} with transaction ID: {signature}"
+        except Exception as e:
+            return f"Error: {e}"
+    
+
+    print("Welcome to the Solana Swarm AI on Devnet. Type 'exit' to quit.")
+    
+    async with ai as ai_instance:
+        while True:
+            user_input = input("You: ").strip()
+            
+            if user_input.lower() == 'exit':
+                print("Goodbye!")
+                break
+            
+            print("AI: ", end="", flush=True)
+            async for chunk in ai_instance.text("1", user_input):
+                print(chunk, end="", flush=True)
+            print()  # New line after the complete response
 
 if __name__ == "__main__":
-    main()
+    if not os.getenv("OPENAI_API_KEY"):
+        print("Please set the OPENAI_API_KEY environment variable.")
+    asyncio.run(main())
