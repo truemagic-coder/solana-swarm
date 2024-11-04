@@ -20,11 +20,11 @@ Fork it to create your own Solana Agent!
 * Transfer between accounts
 
 ## Rate-Limited Public RPCs
-`solana-swarm` = devnet
-`solana-swarm --network mainnet` = mainnet-beta
+* `solana-swarm` = devnet
+* `solana-swarm --network mainnet` = mainnet-beta
 
 ## Custom RPC
-`solana-swarm --rpc https://my-custom-rpc.com/123`
+* `solana-swarm --rpc https://my-custom-rpc.com/123`
 
 ## Test Flow on Devnet:
 * Install OpenAI API KEY for `zsh` shell:
