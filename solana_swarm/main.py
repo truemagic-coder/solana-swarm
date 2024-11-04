@@ -79,7 +79,7 @@ async def main():
                 print(chunk, end="", flush=True)
             print()  # New line after the complete response
 
-if __name__ == "__main__":
+def cli():
     if not os.getenv("OPENAI_API_KEY"):
         print("Please set the OPENAI_API_KEY environment variable.")
     asyncio.run(main())
