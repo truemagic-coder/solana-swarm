@@ -4,6 +4,12 @@
 
 [![Solana Swarm](https://cdn.cometheart.com/solana-swarm-logo.jpeg)](https://solana-swarm.com)
 
+
+
+https://github.com/user-attachments/assets/16e7ec5e-a0a7-4bab-afca-dc621de1aa37
+
+
+
 This CLI tool is a stateful AI agent that can perform actions on the Solana blockchain (devnet).
 
 Fork it to create your own Solana Agent!
