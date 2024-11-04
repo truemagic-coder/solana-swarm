@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/16e7ec5e-a0a7-4bab-afca-dc621de1aa37
 
 
 
-This CLI tool is a stateful AI agent that can perform actions on the Solana blockchain (devnet).
+This CLI tool is a stateful AI agent that can perform actions on the Solana blockchain.
 
 Fork it to create your own Solana Agent!
 
@@ -18,6 +18,13 @@ Fork it to create your own Solana Agent!
 * Create new accounts
 * Get balances of accounts
 * Transfer between accounts
+
+## Rate-Limited Public RPCs
+`solana-swarm` = devnet
+`solana-swarm --network mainnet` = mainnet-beta
+
+## Custom RPC
+`solana-swarm --rpc https://my-custom-rpc.com/123`
 
 ## Test Flow on Devnet:
 * Install OpenAI API KEY for `zsh` shell:

@@ -1,4 +1,5 @@
 from typing import List
+import click
 import os
 import asyncio
 from cyberchipped import AI, SQLiteDatabase
@@ -8,10 +9,16 @@ from solders.system_program import TransferParams, transfer
 from solana.rpc.commitment import Confirmed
 from solana.rpc.api import Client
 
-async def main():
+async def main(network: str, rpc: str):
 
     database = SQLiteDatabase("swarm.db")
-    http_client = Client("https://api.devnet.solana.com")
+    http_client = None
+    if network == "mainnet":
+        http_client = Client("https://api.mainnet-beta.solana.com")
+    if network == "devnet":
+        http_client = Client("https://api.devnet.solana.com")
+    if rpc is not None:
+        http_client = Client(rpc)
     keypairs : List[Keypair] = []
     
     ai = AI(
@@ -64,7 +71,7 @@ async def main():
             return f"Error: {e}"
     
 
-    print("Welcome to the Solana Swarm AI on Devnet. Type 'exit' to quit.")
+    print("Welcome to the Solana Swarm AI. Type 'exit' to quit.")
     
     async with ai as ai_instance:
         while True:
@@ -79,7 +86,10 @@ async def main():
                 print(chunk, end="", flush=True)
             print()  # New line after the complete response
 
-def cli():
+@click.command()
+@click.option("--network", required=False, default="devnet", type=click.Choice(["devnet", "mainnet"]), help="Solana Network to connect")
+@click.option("--rpc", required=False, help="Custom RPC URL")
+def cli(network: str = "devnet", rpc: str = None):
     if not os.getenv("OPENAI_API_KEY"):
         print("Please set the OPENAI_API_KEY environment variable.")
-    asyncio.run(main())
+    asyncio.run(main(network, rpc))
