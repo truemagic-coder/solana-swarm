@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "solana-swarm"
-version = "0.0.3"
+version = "0.0.4"
 description = "Solana AI Agent"
 authors = ["Bevan Hunt <bevan@bevanhunt.com>"]
 license = "MIT"
@@ -17,7 +17,7 @@ classifiers = [
 packages = [{include = "solana_swarm"}]
 
 [tool.poetry.dependencies]
-python = "<4.0,>=3.12"
+python = "<4.0,>=3.9"
 cyberchipped = "2.1.2"
 solana = "0.35.0"
 solders = "0.21.0"
