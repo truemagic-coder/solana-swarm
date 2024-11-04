@@ -19,6 +19,13 @@ Fork it to create your own Solana Agent!
 * Get balances of accounts
 * Transfer between accounts
 
+## Setup:
+* Install OpenAI API KEY for zsh shell:
+    * `echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
+
+## Install:
+* `pip install solana-swarm`
+
 ## Rate-Limited Public RPCs
 * `solana-swarm` = devnet
 * `solana-swarm --network mainnet-beta` = mainnet-beta
@@ -26,10 +33,7 @@ Fork it to create your own Solana Agent!
 ## Custom RPC
 * `solana-swarm --rpc https://my-custom-rpc.com/123`
 
-## Test Flow on Devnet:
-* Install OpenAI API KEY for `zsh` shell:
-    * `echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
-* `pip install solana-swarm`
+## Example Test Flow on Devnet:
 * `solana-swarm`
 * Tell the AI to: `create 2 new accounts`
 * Go to https://faucet.solana.com/ and airdrop 0.5 SOL into account 1 (cut and paste public key from CLI into site)
