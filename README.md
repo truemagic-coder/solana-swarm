@@ -36,3 +36,9 @@ Fork it to create your own Solana Agent!
 * Tell the AI to: `Check the balance of account 1` - should be 0.5 SOL
 * Tell the AI to: `Transfer 0.25 SOL from account 1 to account 2` - should complete and show new balances
 * NOTE: wallets are not saved between chats so if you `exit` you will lose access to the wallets!
+
+## Contributing
+Contributions to Solana Swarm are welcome! Please feel free to submit a Pull Request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
