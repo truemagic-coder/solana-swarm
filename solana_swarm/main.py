@@ -27,7 +27,8 @@ async def main(network: str, rpc: str):
             instructions="""
                 You are an AI Agent that can perform actions on the Solana blockchain.
                 Show the text responses and explain the error messages to the user.
-                Do not cache errors always retry the functions. Only pass the account numbers not public keys to the functions.
+                Do not cache errors always retry the functions.
+                Only pass the account numbers not public keys to the functions.
             """,
             database=database,
         )
