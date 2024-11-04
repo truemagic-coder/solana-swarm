@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/16e7ec5e-a0a7-4bab-afca-dc621de1aa37
 
 
 
-This CLI tool is a stateful AI agent that can perform actions on the Solana blockchain.
+Solana Swarm is a stateful AI agent for the CLI that can perform actions on the Solana blockchain.
 
 Fork it to create your own Solana Agent!
 
