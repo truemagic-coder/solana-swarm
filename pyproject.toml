@@ -1,11 +1,30 @@
-[project]
+[tool.poetry]
 name = "solana-swarm"
 version = "0.0.1"
-description = "Solana Swarm"
+description = "Solana AI Agent"
+authors = ["Bevan Hunt <bevan@bevanhunt.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "cyberchipped>=2.1.1",
-    "solana>=0.35.0",
-    "solders>=0.21.0",
+homepage = "https://solana-swarm.com"
+repository = "https://github.com/truemagic-coder/solana-swarm"
+keywords = ["ai", "agent", "ai agent", "solana ai agent"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
 ]
+packages = [{include = "solana_swarm"}]
+
+[tool.poetry.dependencies]
+python = "<4.0,>=3.12"
+cyberchipped = "2.1.2"
+solana = "0.35.0"
+solders = "0.21.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+solana-swarm = "solana_swarm.main:main"

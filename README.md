@@ -10,12 +10,7 @@ This CLI tool is a stateful AI agent that can perform actions on the Solana bloc
 ## Test Flow on Devnet:
 * Install OpenAI API KEY for `zsh` shell:
     * `echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
-* `git clone https://github.com/truemagic-coder/solana-swarm`
-* make sure `uv` is installed (`pip install uv`)
-* `cd solana-swarm`
-* `uv venv`
-* `source .venv/bin/activate`
-* `python main.py`
+* `pip install solana-swarm`
 * Tell the AI to: `create 2 new accounts`
 * Go to https://faucet.solana.com/ and airdrop 0.5 SOL into account 1 (cut and paste public key from CLI into site)
 * Tell the AI to: `Check the balance of account 1` - should be 0.5 SOL
