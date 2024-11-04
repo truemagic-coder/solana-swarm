@@ -26,14 +26,16 @@ Fork it to create your own Solana Agent!
 ## Install
 * `pip install solana-swarm`
 
-## Rate-Limited Public RPCs
+## Usage
+
+### Rate-Limited Public RPCs
 * `solana-swarm` = devnet
 * `solana-swarm --network mainnet-beta` = mainnet-beta
 
-## Custom RPC
+### Custom RPC
 * `solana-swarm --rpc https://my-custom-rpc.com/123`
 
-## Example Test Flow on Devnet
+### Example Test Flow on Devnet
 * `solana-swarm`
 * Tell the AI to: `create 2 new accounts`
 * Go to https://faucet.solana.com/ and airdrop 0.5 SOL into account 1 (cut and paste public key from CLI into site)
