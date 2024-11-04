@@ -2,7 +2,7 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/solana-swarm)](https://pypi.org/project/solana-swarm/)
 
-[![Solana Swarm](logo.jpeg)](https://solana-swarm.com)
+[![Solana Swarm](https://cdn.cometheart.com/solana-swarm-logo.jpeg)](https://solana-swarm.com)
 
 This CLI tool is a stateful AI agent that can perform actions on the Solana blockchain (devnet).
 
