@@ -14,16 +14,16 @@ This CLI tool is a stateful AI agent that can perform actions on the Solana bloc
 
 Fork it to create your own Solana Agent!
 
-## Actions:
+## Actions
 * Create new accounts
 * Get balances of accounts
 * Transfer between accounts
 
-## Setup:
+## Setup
 * Install OpenAI API KEY for zsh shell:
     * `echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
 
-## Install:
+## Install
 * `pip install solana-swarm`
 
 ## Rate-Limited Public RPCs
@@ -33,7 +33,7 @@ Fork it to create your own Solana Agent!
 ## Custom RPC
 * `solana-swarm --rpc https://my-custom-rpc.com/123`
 
-## Example Test Flow on Devnet:
+## Example Test Flow on Devnet
 * `solana-swarm`
 * Tell the AI to: `create 2 new accounts`
 * Go to https://faucet.solana.com/ and airdrop 0.5 SOL into account 1 (cut and paste public key from CLI into site)
