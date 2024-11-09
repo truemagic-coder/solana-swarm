@@ -18,10 +18,16 @@ Fork it to create your own Solana Agent!
 * Create new accounts
 * Get balances of accounts
 * Transfer between accounts
+* Lookup token address for name or symbol of token from Jupiter strict list
+* Lookup USD price for name or symbol of token (requires free AlphaVybe account)
+* Lookup trading info for name or symbol of token (requires free AlphaVybe account)
+* Lookup OHLC prices for name or symbol of token (requires free AlphaVybe account)
 
 ## Setup
 * Install OpenAI API KEY for zsh shell:
     * `echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
+* Install AlphaVybe API KEY for zsh shell
+    * `echo 'export VYBE_API_KEY="YOUR_API_KEY"' >> ~/.zshrc`
 
 ## Install
 * `pip install solana-swarm`
@@ -41,7 +47,6 @@ Fork it to create your own Solana Agent!
 * Go to https://faucet.solana.com/ and airdrop 0.5 SOL into account 1 (cut and paste public key from CLI into site)
 * Tell the AI to: `Check the balance of account 1` - should be 0.5 SOL
 * Tell the AI to: `Transfer 0.25 SOL from account 1 to account 2` - should complete and show new balances
-* NOTE: wallets are not saved between chats so if you `exit` you will lose access to the wallets!
 
 ## Contributing
 Contributions to Solana Swarm are welcome! Please feel free to submit a Pull Request.
