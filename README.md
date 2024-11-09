@@ -18,10 +18,11 @@ Fork it to create your own Solana Agent!
 * Create new accounts
 * Get balances of accounts
 * Transfer between accounts
-* Lookup token address for name or symbol of token from Jupiter strict list
-* Lookup USD price for name or symbol of token (requires free AlphaVybe account)
-* Lookup trading info for name or symbol of token (requires free AlphaVybe account)
-* Lookup OHLC prices for name or symbol of token (requires free AlphaVybe account)
+* Lookup token address for a token by name or symbol from Jupiter strict list
+* Lookup USD price for a token (requires free AlphaVybe account)
+* Lookup trading info for a token (requires free AlphaVybe account)
+* Lookup OHLC prices for a token (requires free AlphaVybe account)
+* Calculate gain/losses for a token (1-day resolution) (requires free AlphaVybe account)
 
 ## Setup
 * Install OpenAI API KEY for zsh shell:
