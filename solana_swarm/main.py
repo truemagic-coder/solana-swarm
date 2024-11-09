@@ -8,7 +8,6 @@ from cyberchipped import AI, SQLiteDatabase
 from solders.keypair import Keypair
 from solders.transaction import Transaction
 from solders.system_program import TransferParams, transfer
-from solana.rpc.commitment import Confirmed
 from solana.rpc.api import Client
 
 DB_PATH = "swarm.db"
@@ -161,11 +160,16 @@ async def main(network: str, rpc: str):
     def get_balance(account_number: str) -> str:
         try:
             account_number = int(account_number)
-            balance = http_client.get_balance(
-                pubkey=keypairs[account_number - 1].pubkey(), commitment=Confirmed
-            ).value
-            balance = balance / 10**9
-            return f"Balance of {keypairs[account_number-1].pubkey()} is {balance} SOL"
+            url = f"https://api.vybenetwork.xyz/account/token-balance/{keypairs[account_number - 1].pubkey()}"
+
+            headers = {
+                "accept": "application/json",
+                "X-API-KEY": os.getenv("VYBE_API_KEY"),
+            }
+
+            response = requests.get(url, headers=headers)
+
+            return f"Data: {response.json()}"
         except Exception as e:
             return f"Error: {e}"
 
@@ -273,12 +277,12 @@ async def main(network: str, rpc: str):
 @click.option(
     "--network",
     required=False,
-    default="devnet",
+    default="mainnet-beta",
     type=click.Choice(["devnet", "mainnet-beta"]),
     help="Solana Network to connect",
 )
 @click.option("--rpc", required=False, help="Custom RPC URL")
-def cli(network: str = "devnet", rpc: str = None):
+def cli(network: str = "mainnet-beta", rpc: str = None):
     if not os.getenv("OPENAI_API_KEY"):
         print("Please set the OPENAI_API_KEY environment variable.")
     if not os.getenv("VYBE_API_KEY"):
