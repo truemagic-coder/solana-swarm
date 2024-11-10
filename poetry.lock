@@ -230,13 +230,13 @@ construct = "2.10.68"
 
 [[package]]
 name = "cyberchipped"
-version = "2.1.5"
+version = "2.1.6"
 description = "Build AI Assistants Fast"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "cyberchipped-2.1.5-py3-none-any.whl", hash = "sha256:ee8fd78315fe549788d045f69d436b2ebe67665be007aec1f435233150429662"},
-    {file = "cyberchipped-2.1.5.tar.gz", hash = "sha256:146ca74812c448f81dd7c5d9d231560b02e11ddd611693d3c4a8a25f876dd7c9"},
+    {file = "cyberchipped-2.1.6-py3-none-any.whl", hash = "sha256:55257a9445e9a8f54099167f0c64e2e76890bc6d945c16bb6e6d6f40960e3250"},
+    {file = "cyberchipped-2.1.6.tar.gz", hash = "sha256:5340c69ea4ab173adf477c476c14a4ef458890ea14f280d654ad382d52c07efa"},
 ]
 
 [package.dependencies]
@@ -910,4 +910,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "<4.0,>=3.9"
-content-hash = "f9f0517b9402a114af3ae876eaa7b456f97b03e78403e559d97bdd743f36adb6"
+content-hash = "e6a8954b7097855e72b0ea1e800120d7cc62b65067e415d4d770a586ba3c790b"
